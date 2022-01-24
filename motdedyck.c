@@ -107,6 +107,7 @@ int main(int argc, char *argv[]) {
         	printf("mot non equilibre\n");
                 exit(1);
         }
+	    }
 
 	for (int i = 0; i < 40; ++i) {
                 for (int j = 0; j < 40; ++j) {
@@ -126,10 +127,17 @@ int main(int argc, char *argv[]) {
                     printf("%s\n", 1);
                 }
             }
-
-        }
 	
+	if (argc == 1) {
+                for (int i = max - 1; i >= 0; --i) {
+                    for (int j = 0; j < y; ++j) {
+                        printf("%c", tab[i][j]);
+                    }
+                    printf("\n");
+                }
+            }
 
+        
 	    
 	} else {
             printf("lettre interdite\n");
