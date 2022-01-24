@@ -36,6 +36,39 @@ enum error {
     ERREUR_MOT_NON_EQUILIBRE    = 5
 };
 
+bool verifierLettres(const char *nombre, const char *un, const char *deux) {
+    bool valeur;
+    int p = 0;
+    int l = 0;
+
+    for (int i = 0; nombre[i] != '\0'; ++i) {
+        if (nombre[i] == un[0] || nombre[i] == deux[0]) {
+            valeur = true;
+        } else {
+            valeur = false;
+            break;
+        }
+    }
+    if (valeur) {
+        for (int k = 0; nombre[k]; k++) {
+            if (nombre[k] == un[0]) {
+                p++;
+            }
+        }
+        for (int k = 0; nombre[k]; k++) {
+            if (nombre[k] == deux[0]) {
+                l++;
+            }
+        }
+        if (p != l) {
+            printf("mot non equilibre\n");
+            exit(1);
+        }
+
+    }
+    return valeur;
+}
+
 int main(int argc, char *argv[]) {
     printf("Hello world\n"); 	
     return 0;
@@ -83,7 +116,9 @@ int main(int argc, char *argv[]) {
                 }
             }
 
-        } else {
+        }
+
+	} else {
             printf("lettre interdite\n");
         }
     } else {
