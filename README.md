@@ -3,8 +3,6 @@
 
 ## Format Markdown (supprimer cette section avant la remise)
 
-N'oubliez pas de bien exploiter le format Markdown.
-
 Sauter une ligne pour changer de paragraphe.
 
 Mettre les noms de fichier et bout de code courts entre apostrophes inversés.
@@ -31,6 +29,13 @@ lisibilité avec un éditeur de texte.
 
 ## Description
 
+Projet d'introduction au langage C. Ce projet demande des entrées par stdin et des arguments.
+Fait l'affichage d'une image ASCII, l'hauteur, de l'aire ou du manuel d'usage.
+
+Les entrées demandées par stdin seront transmises à travers un fichier entree.txt.
+Les arguments uniques sont l'hauteur et l'aire. Ils sont generés uniquement en ecrivant 
+le mot `hauteur ` et le mot `aire`.
+
 Décrivez ici le projet. Commencez d'abord par une description générale, puis
 donnez ensuite des détails. Indiquez le contexte dans lequel ce travail est
 accompli (cours, sigle, enseignant, université).
@@ -39,12 +44,7 @@ Aussi, insérer un lien vers le [sujet du travail](sujet.md).
 
 ## Auteur
 
-Indiquez ici votre prénom et nom, puis votre code permanent entre parenthèses,
-sans mettre en gras ou en italique.
-
-Par exemple,
-
-Serge Dogny (ABCD12345678)
+Renzo Arturo Salcedo (SALR02089408)
 
 ## Fonctionnement
 
