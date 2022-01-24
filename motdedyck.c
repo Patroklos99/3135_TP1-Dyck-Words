@@ -39,4 +39,26 @@ enum error {
 int main(int argc, char *argv[]) {
     printf("Hello world\n"); 	
     return 0;
+
+    char arr[100];
+    int q = 0;
+    int w = 0;
+    char un[3];
+    char deux[3];
+    char trois[40];
+    int pos;
+    int x = 0;
+    int y = 0;
+    int max = -1;
+
+    fgets(arr, 100, stdin);
+    sscanf(arr, "%s %s %s", &un, &deux, &trois);
+
+    for (int k = 0; trois[k]; k++) {
+        if (trois[k] == un[1]) {
+            q++;
+        } else {
+            w++;
+        }
+    }
 }
