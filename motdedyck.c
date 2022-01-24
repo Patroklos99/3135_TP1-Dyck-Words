@@ -52,4 +52,14 @@ int main(int argc, char *argv[]) {
     fgets(arr, 100, stdin);
     sscanf(arr, "%s %s %s", &un, &deux, &trois);
 
+    if (strlen(trois) <= 40) {
+        if (verifierLettres(trois, un, deux)) {
+            char tab[100][100];
+
+        } else {
+            printf("lettre interdite\n");
+        }
+    } else {
+        printf("mot trop long\n");
+    }
 }
