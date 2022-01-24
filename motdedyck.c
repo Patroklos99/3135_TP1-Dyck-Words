@@ -116,8 +116,21 @@ int main(int argc, char *argv[]) {
                 }
             }
 
-        }
+	if (argc >= 2) {
+                if (argc == 2 && strcmp(argv[1], "hauteur") == 0) {
+                    printf("%d\n", max);
+                } else if (argc == 2 && strcmp(argv[1], "aire") == 0) {
+                    int aire = (max * y) / 2;
+                    printf("%d\n", aire);
+                } else {
+                    printf("%s\n", 1);
+                }
+            }
 
+        }
+	
+
+	    
 	} else {
             printf("lettre interdite\n");
         }
