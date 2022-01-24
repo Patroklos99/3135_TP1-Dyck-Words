@@ -66,7 +66,15 @@ int main(int argc, char *argv[]) {
                     tab[x][y] = '\\';
                     y++;
                 }
-		
+
+	if (max < x) {
+        	max = x;
+        }
+        if (x < 0) {
+        	printf("mot non equilibre\n");
+                exit(1);
+        }
+
         } else {
             printf("lettre interdite\n");
         }
