@@ -55,7 +55,18 @@ int main(int argc, char *argv[]) {
     if (strlen(trois) <= 40) {
         if (verifierLettres(trois, un, deux)) {
             char tab[100][100];
-
+	
+	    for (int i = 0; trois[i] != '\0'; ++i) {
+                if (trois[i] == un[0]) {
+                    tab[x][y] = '/';
+                    x++;
+                    y++;
+                } else {
+                    x--;
+                    tab[x][y] = '\\';
+                    y++;
+                }
+		
         } else {
             printf("lettre interdite\n");
         }
