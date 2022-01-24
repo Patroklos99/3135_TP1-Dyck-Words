@@ -70,8 +70,6 @@ bool verifierLettres(const char *nombre, const char *un, const char *deux) {
 }
 
 int main(int argc, char *argv[]) {
-    printf("Hello world\n"); 	
-    return 0;
 
     char arr[100];
     char un[3];
@@ -81,9 +79,20 @@ int main(int argc, char *argv[]) {
     int x = 0;
     int y = 0;
     int max = -1;
+	
+    pos = ftell(stdin);
+    fseek(stdin, 0, SEEK_END);
+    if (pos - ftell(stdin)) {
+        rewind(stdin);
+        fgets(arr, 100, stdin);
+        sscanf(arr, "%s %s %s", &un, &deux, &trois);
+        //printf("Input: %s\n", arr);
+    } else {
+        printf("%s\n", USAGE);
 
-    fgets(arr, 100, stdin);
-    sscanf(arr, "%s %s %s", &un, &deux, &trois);
+        printf("No input!\n");
+        exit(1);
+    }
 
     if (strlen(trois) <= 40) {
         if (verifierLettres(trois, un, deux)) {
