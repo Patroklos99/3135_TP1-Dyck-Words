@@ -2,7 +2,6 @@
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
-
 #define TAILLE_MOT 40
 #define USAGE "\
 Usage: %s [HEIGHT,AREA] <LETTER 1> <LETTER 2> <WORD>\n\

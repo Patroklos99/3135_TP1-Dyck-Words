@@ -1,5 +1,5 @@
 motdedyck: motdedyck.c
 	gcc -o motdedyck -std=c11 motdedyck.c
 
-test:
+test: motdedyck 
 	bats check.bats
