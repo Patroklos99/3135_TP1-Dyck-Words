@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
+
 #define TAILLE_MOT 40
 #define USAGE "\
 Usage: %s [HEIGHT,AREA] <LETTER 1> <LETTER 2> <WORD>\n\
@@ -28,13 +29,18 @@ struct motDeDyck {
 };
 
 enum error {
-    OK                          = 0,
-    ERREUR_ARGUMENTS_INVALIDES  = 1,
-    ERREUR_DONNEES_INVALIDES    = 2,
-    ERREUR_MOT_TROP_LONG        = 3,
-    ERREUR_LETTRE_INTERDITE     = 4,
-    ERREUR_MOT_NON_EQUILIBRE    = 5
+    OK = 0,
+    ERREUR_ARGUMENTS_INVALIDES = 1,
+    ERREUR_DONNEES_INVALIDES = 2,
+    ERREUR_MOT_TROP_LONG = 3,
+    ERREUR_LETTRE_INTERDITE = 4,
+    ERREUR_MOT_NON_EQUILIBRE = 5
 };
+
+
+bool verifierEquilibre() {
+
+}
 
 bool verifierLettres(const char *nombre, const char *un, const char *deux) {
     bool valeur;
@@ -62,7 +68,7 @@ bool verifierLettres(const char *nombre, const char *un, const char *deux) {
         }
         if (p != l) {
             printf("mot non equilibre\n");
-            exit(1);
+            exit(0);
         }
 
     }
@@ -70,7 +76,6 @@ bool verifierLettres(const char *nombre, const char *un, const char *deux) {
 }
 
 int main(int argc, char *argv[]) {
-
     char arr[100];
     char un[3];
     char deux[3];
@@ -79,26 +84,49 @@ int main(int argc, char *argv[]) {
     int x = 0;
     int y = 0;
     int max = -1;
-	
+
+
     pos = ftell(stdin);
     fseek(stdin, 0, SEEK_END);
-    if (pos - ftell(stdin)) {
+    if (pos - ftell(stdin) ) {
         rewind(stdin);
         fgets(arr, 100, stdin);
         sscanf(arr, "%s %s %s", &un, &deux, &trois);
         //printf("Input: %s\n", arr);
+    } else if (argc == 4) {
+        un[0] = *argv[1];
+        deux[0] = *argv[2];
+        strcpy(trois, argv[3]);
+    } else if (argc == 5) {
+        un[0] = *argv[2];
+        deux[0] = *argv[3];
+        strcpy(trois, argv[4]);
+    } else if (argc == 1) {
+        printf(USAGE, "./motdedyck");
+        exit(0);
     } else {
-        printf("%s\n", USAGE);
+        printf("donnees invalides\n");
+        exit(0);
+    }
 
-        printf("No input!\n");
-        exit(1);
+        /*fgets(arr, 100, stdin);
+        sscanf(arr, "%s %s %s", &un, &deux, &trois);*/
+
+    if ((argc == 1 || argc > 5) && (strlen(un) > 1 || strlen(deux) > 1 || trois[0] == 0 || un[0] == deux[0])) {
+        printf("donnees invalides\n");
+        exit(0);
+    }
+
+    if (un[0] == 0 && deux[0] == 0 && trois[0] == 0 && argc == 1) {
+        printf("Texte du man\n");
+        exit(0);
     }
 
     if (strlen(trois) <= 40) {
         if (verifierLettres(trois, un, deux)) {
             char tab[100][100];
-	
-	    for (int i = 0; trois[i] != '\0'; ++i) {
+
+            for (int i = 0; trois[i] != '\0'; ++i) {
                 if (trois[i] == un[0]) {
                     tab[x][y] = '/';
                     x++;
@@ -108,36 +136,36 @@ int main(int argc, char *argv[]) {
                     tab[x][y] = '\\';
                     y++;
                 }
+                if (max < x) {
+                    max = x;
+                }
+                if (x < 0) {
+                    printf("mot non equilibre\n");
+                    exit(0);
+                }
+            }
 
-	if (max < x) {
-        	max = x;
-        }
-        if (x < 0) {
-        	printf("mot non equilibre\n");
-                exit(1);
-        }
-	    }
-
-	for (int i = 0; i < 40; ++i) {
+            for (int i = 0; i < 40; ++i) {
                 for (int j = 0; j < 40; ++j) {
                     if (tab[i][j] == NULL) {
                         tab[i][j] = '*';
                     }
                 }
             }
-
-	if (argc >= 2) {
-                if (argc == 2 && strcmp(argv[1], "hauteur") == 0) {
+            if (argc >= 2) {
+                if ((argc == 2 || argc == 5) && (strcmp(argv[1], "hauteur") == 0 || strcmp(argv[1], "hauteur") == 0)) {
                     printf("%d\n", max);
-                } else if (argc == 2 && strcmp(argv[1], "aire") == 0) {
+                    exit(0);
+                } else if ((argc == 2 || argc == 5) && strcmp(argv[1], "aire") == 0 || strcmp(argv[1], "aire") == 0) {
                     int aire = (max * y) / 2;
                     printf("%d\n", aire);
-                } else {
-                    printf("%s\n", 1);
+                    exit(0);
+                } else if ((argc == 2 || argc == 5) && (strcmp(argv[1], "hauteur") != 0 || strcmp(argv[1], "aire") != 0)) {
+                    printf("argument invalide\n");
+                    exit(0);
                 }
             }
-	
-	if (argc == 1) {
+            if (argc == 1 || argc == 4) {
                 for (int i = max - 1; i >= 0; --i) {
                     for (int j = 0; j < y; ++j) {
                         printf("%c", tab[i][j]);
@@ -146,12 +174,12 @@ int main(int argc, char *argv[]) {
                 }
             }
 
-        
-	    
-	} else {
+        } else {
             printf("lettre interdite\n");
         }
     } else {
         printf("mot trop long\n");
     }
+    return 0;
 }
+
