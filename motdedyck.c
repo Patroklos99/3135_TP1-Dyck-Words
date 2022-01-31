@@ -37,10 +37,6 @@ enum error {
 };
 
 
-bool verifierEquilibre() {
-
-}
-
 bool verifierLettres(const char *nombre, const char *un, const char *deux) {
     bool valeur;
     int p = 0;
@@ -90,7 +86,7 @@ int main(int argc, char *argv[]) {
     if (pos - ftell(stdin) ) {
         rewind(stdin);
         fgets(arr, 100, stdin);
-        sscanf(arr, "%s %s %s", &un, &deux, &trois);
+        sscanf(arr, "%s %s %s", un, deux, trois);
         //printf("Input: %s\n", arr);
     } else if (argc == 4) {
         un[0] = *argv[1];
@@ -146,7 +142,7 @@ int main(int argc, char *argv[]) {
 
             for (int i = 0; i < 40; ++i) {
                 for (int j = 0; j < 40; ++j) {
-                    if (tab[i][j] == NULL) {
+                    if (tab[i][j] == '\0') {
                         tab[i][j] = '*';
                     }
                 }
@@ -155,7 +151,7 @@ int main(int argc, char *argv[]) {
                 if ((argc == 2 || argc == 5) && (strcmp(argv[1], "hauteur") == 0 || strcmp(argv[1], "hauteur") == 0)) {
                     printf("%d\n", max);
                     exit(0);
-                } else if ((argc == 2 || argc == 5) && strcmp(argv[1], "aire") == 0 || strcmp(argv[1], "aire") == 0) {
+                } else if ((argc == 2 || argc == 5) && (strcmp(argv[1], "aire") == 0 || strcmp(argv[1], "aire") == 0)) {
                     int aire = (max * y) / 2;
                     printf("%d\n", aire);
                     exit(0);
