@@ -72,8 +72,8 @@ bool verifierLettres(const char *nombre, const char *un, const char *deux) {
 
 int main(int argc, char *argv[]) {
     char arr[100];
-    char un[3];
-    char deux[3];
+    char un[3] = "\0";
+    char deux[3] = "\0";
     char trois[40];
     int pos;
     int x = 0;
@@ -104,10 +104,10 @@ int main(int argc, char *argv[]) {
         exit(0);
     }
 
-        /*fgets(arr, 100, stdin);
-        sscanf(arr, "%s %s %s", &un, &deux, &trois);*/
+    /*fgets(arr, 100, stdin);
+    sscanf(arr, "%s %s %s", &un, &deux, &trois);*/
 
-    if ((argc == 1 || argc > 5) && (strlen(un) > 1 || strlen(deux) > 1 || trois[0] == 0 || un[0] == deux[0])) {
+    if (strlen(un) != 1 || strlen(deux) != 1 || trois[0] == 0 || un[0] == deux[0]) {
         printf("donnees invalides\n");
         exit(0);
     }
@@ -177,4 +177,5 @@ int main(int argc, char *argv[]) {
     }
     return 0;
 }
+
 
