@@ -87,7 +87,6 @@ int main(int argc, char *argv[]) {
         rewind(stdin);
         fgets(arr, 100, stdin);
         sscanf(arr, "%s %s %s", un, deux, trois);
-        //printf("Input: %s\n", arr);
     } else if (argc == 4) {
         un[0] = *argv[1];
         deux[0] = *argv[2];
