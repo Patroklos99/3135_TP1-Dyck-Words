@@ -79,7 +79,7 @@ int main(int argc, char *argv[]) {
     int x = 0;
     int y = 0;
     int max = -1;
-
+    int aire = 0;	
 
     pos = ftell(stdin);
     fseek(stdin, 0, SEEK_END);
@@ -137,6 +137,7 @@ int main(int argc, char *argv[]) {
                     printf("mot non equilibre\n");
                     exit(0);
                 }
+		aire += x;
             }
 
             for (int i = 0; i < 40; ++i) {
@@ -151,7 +152,7 @@ int main(int argc, char *argv[]) {
                     printf("%d\n", max);
                     exit(0);
                 } else if ((argc == 2 || argc == 5) && (strcmp(argv[1], "aire") == 0 || strcmp(argv[1], "aire") == 0)) {
-                    int aire = (max * y) / 2;
+                    //int aire = (max * y) / 2;
                     printf("%d\n", aire);
                     exit(0);
                 } else if ((argc == 2 || argc == 5) && (strcmp(argv[1], "hauteur") != 0 || strcmp(argv[1], "aire") != 0)) {
