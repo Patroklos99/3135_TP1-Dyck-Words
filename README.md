@@ -32,21 +32,27 @@ lisibilité avec un éditeur de texte.
 Projet d'introduction au langage C. Ce projet demande des entrées par stdin et des arguments.
 Fait l'affichage d'une image ASCII, l'hauteur, de l'aire ou du manuel d'usage.
 
-Les entrées demandées par stdin seront transmises à travers un fichier entree.txt.
-Les arguments uniques sont l'hauteur et l'aire. Ils sont generés uniquement en ecrivant 
+Les entrées demandées par stdin seront transmises à travers un fichier entree.txt ou en tant
+qu'arguments
+Les seuls arguments acceptés sont l'hauteur et l'aire. Ils sont generés uniquement en ecrivant 
 le mot `hauteur ` et le mot `aire`.
 
-Décrivez ici le projet. Commencez d'abord par une description générale, puis
-donnez ensuite des détails. Indiquez le contexte dans lequel ce travail est
-accompli (cours, sigle, enseignant, université).
+Ce travail est realisé en vue du travail TP1 dans le cadre du cours Construction et
+maintenance de logiciels INF3135. Cours donné par Serge Dogny à l'Université de Québec à Montreal.
 
-Aussi, insérer un lien vers le [sujet du travail](sujet.md).
+insérer un lien vers le [sujet du travail](sujet.md).
 
 ## Auteur
 
-Renzo Arturo Salcedo (SALR02089408)
+Renzo Arturo Salcedo (SALR02089408).
 
 ## Fonctionnement
+
+Premierement assemblez et compiler le fichier `motdedyck.c`. 
+Vous obtiendrez l'exécutable `motdedyck`. 
+
+Deuxièmement ajoutez les entrees par la ligne de commande en les écrivant `./motdedyck a b aabb`
+ou par rédirection en les plaçants dans un fichier .txt 
 
 Expliquez d'abord en mots comment faire fonctionner le projet (imaginez que la
 personne qui l'utilisera ne connaît pas C, ne connaît pas le projet et souhaite
