@@ -40,7 +40,7 @@ le mot `hauteur ` et le mot `aire`.
 Ce travail est realisé en vue du travail TP1 dans le cadre du cours Construction et
 maintenance de logiciels INF3135. Cours donné par Serge Dogny à l'Université de Québec à Montreal.
 
-insérer un lien vers le [sujet du travail](sujet.md).
+Lien vers le [sujet du travail](https://gitlab.info.uqam.ca/salcedo_salcedo.renzo/h22-inf3135-tp1/-/blob/master/sujet.md).
 
 ## Auteur
 
@@ -62,8 +62,14 @@ l'exécution.
 
 ## Tests
 
-Expliquez ici comment lancer la suite de tests automatiques avec la commande
-`make test`, ainsi que le résultat que vous obtenez.
+Pour lancer les tests vous devez ecrire `make test` sur la ligne de commande.
+Vous obtiendrez les resultats du fichier `check.bats`, qui vous informera de vos tests réussis et ceux 
+échoués.
+
+Si vous n'avez pas le fichier `motdedyck` avant de lancer cette commande, la 
+commande `gcc -o motdedyck -Wall -Wextra -std=c11 motdedyck.c` sera lancée et 
+un fichier `motdedyck`sera créé automatiquement. Il est possible aussi qu'un fichier 
+`motdedyck.o` soit créé.
 
 ## Dépendances
 
