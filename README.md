@@ -30,12 +30,12 @@ lisibilité avec un éditeur de texte.
 ## Description
 
 Projet d'introduction au langage C. Ce projet demande des entrées par stdin et des arguments.
-Fait l'affichage d'une image ASCII, l'hauteur, de l'aire ou du manuel d'usage.
+Fait l'affichage d'une image ASCII, de l'hauteur, de l'aire ou du manuel d'usage.
 
 Les entrées demandées par stdin seront transmises à travers un fichier entree.txt ou en tant
-qu'arguments
+qu'arguments.
 Les seuls arguments acceptés sont l'hauteur et l'aire. Ils sont generés uniquement en ecrivant 
-le mot `hauteur ` et le mot `aire`.
+le mot `hauteur` et le mot `aire`.
 
 Ce travail est realisé en vue du travail TP1 dans le cadre du cours Construction et
 maintenance de logiciels INF3135. Cours donné par Serge Dogny à l'Université de Québec à Montreal.
@@ -67,7 +67,7 @@ Vous obtiendrez les resultats du fichier `check.bats`, qui vous informera de vos
 échoués.
 
 Si vous n'avez pas le fichier `motdedyck` avant de lancer cette commande, la 
-commande `gcc -o motdedyck -Wall -Wextra -std=c11 motdedyck.c` sera lancée et 
+commande `gcc -o motdedyck -Wall -Wextra -std=c11 motdedyck.c` sera lancée en parellèle et 
 un fichier `motdedyck`sera créé automatiquement. Il est possible aussi qu'un fichier 
 `motdedyck.o` soit créé.
 
@@ -79,31 +79,26 @@ liste à puces pour donner la liste des dépendances.
 
 ## Références
 
-Indiquez ici les références que vous avez utilisées pour compléter le projet,
-avec l'hyperlien vers la référence. Pas besoin de mentionner les diapositives
-du cours, mais si vous avez eu recours à un site d'aide, un fragment de code ou
-une discussion sur un forum, mentionnez-le.
+De facon générale le site [Stackoverflow](https://stackoverflow.com/) a été utilisé pour la 
+compréhension et utilisation des methodes pour le `STDIN`. 
+Des discussions sur le mattermost du cours ont servi d'inspiraton dans ce travail.
 
 ## État du projet
 
-Indiquez toutes les tâches qui ont été complétés en insérant un `X` entre les
-crochets. Si une tâche n'a pas été complétée, expliquez pourquoi (lors de la
-remise, vous pouvez supprimer ce paragraphe).
-
-* [ ] Le nom du dépôt GitLab est exactement `h22-inf3135-tp1` (Pénalité de
+* [X] Le nom du dépôt GitLab est exactement `h22-inf3135-tp1` (Pénalité de
   **50%**).
-* [ ] L'URL du dépôt GitLab est exactement (remplacer `utilisateur` par votre
-  nom identifiant GitLab) `https://gitlab.info.uqam.ca/utilisateur/h22-inf3135-tp1`
+* [X] L'URL du dépôt GitLab est exactement `https://gitlab.info.uqam.ca/utilisateur/h22-inf3135-tp1`
+https://gitlab.info.uqam.ca/salcedo_salcedo.renzo/h22-inf3135-tp1
   (Pénalité de **50%**).
-* [ ] L'utilisateur `dogny_g` a accès au projet en mode *Developer*
+* [X] L'utilisateur `dogny_g` a accès au projet en mode *Developer*
   (Pénalité de **50%**).
 * [ ] Les correcteurs ont accès au projet en mode *Developer* (`id`à venir)
-* [ ] Le dépôt GitLab est un *fork* de [ce
+* [X] Le dépôt GitLab est un *fork* de [ce
   dépôt](https://gitlab.info.uqam.ca/inf3135-sdo/h22-inf3135-tp1)
   (Pénalité de **50%**).
-* [ ] Le dépôt GitLab est privé (Pénalité de **50%**).
-* [ ] Le dépôt contient au moins un fichier `.gitignore`.
-* [ ] Le fichier `Makefile` permet de compiler le projet lorsqu'on entre
+* [X] Le dépôt GitLab est privé (Pénalité de **50%**).
+* [X] Le dépôt contient au moins un fichier `.gitignore`.
+* [X] Le fichier `Makefile` permet de compiler le projet lorsqu'on entre
   `make`. Il supporte les cibles `html`, `test` et `clean`.
 * [ ] Le nombre de tests qui réussissent/échouent avec la `make test` est
   indiqué quelque part dans le fichier `README.md`.
