@@ -24,6 +24,8 @@ maintenance de logiciels INF3135. Cours donné par Serge Dogny à l'Université 
 
 Lien vers le [sujet du travail](https://gitlab.info.uqam.ca/salcedo_salcedo.renzo/h22-inf3135-tp1/-/blob/master/sujet.md).
 
+*Tous les 11 tests ont étés réussis sur ma machine comme sur le serveur Labunix de l'UQAM*
+
 ## Auteur
 
 Renzo Arturo Salcedo (SALR02089408).
@@ -48,11 +50,11 @@ Voici les regles à respecter pour vos entrées:
 * `Format:` ./motdedyck [HEIGHT,AREA] <LETTER 1> <LETTER 2> <WORD>
 * Les des 2 caractères et le mot sont obligatoires.
 * Les deux caractères doivent être différents.
-* le mot a une taille au plus de 40 caractères.
+* Le mot a une taille maximale de 40 caractères.
 * Le mot peut être composé uniquement des deux premieres caractères donnés.
 * Les deux caractères ont exactement le même nombre d'occurrences.
 * Le 1er caractère a une valeur de +1 et le 2ieme a une valeur de -1, il est donc interdit
-que la valeur soit en dessous de l'axe des Y. (i.e abba).
+que la valeur soit en dessous de l'axe des Y. (i.e `abba`).
 * Seuls les arguments `hauteur` ou `aire` sont acceptés.
 * Pour obtenir le manuel du programme, exécutez `./motdedyck` uniquement.
 
@@ -82,10 +84,9 @@ Vous obtiendrez les résultats du fichier `check.bats`, qui vous informera de vo
 
 Si vous n'avez pas le fichier `motdedyck` avant de lancer cette commande, la 
 commande `gcc -o motdedyck -Wall -Wextra -std=c11 motdedyck.c` sera lancée en parellèle et 
-un fichier `motdedyck`sera créé automatiquement. Il est possible aussi qu'un fichier 
-`motdedyck.o` soit créé.
+un fichier `motdedyck`sera créé automatiquement. 
 ```
-* make test
+$ make test
 ``` 
 Cette commande exécute les tests du fichier `check.bats` sur `motdedyck`. Ou Compile 
 `motdedyck.c` s'il ne l'est pas encore et execute les tests par la suite.
@@ -100,7 +101,7 @@ liste à puces pour donner la liste des dépendances.
 
 De facon générale le site [Stackoverflow](https://stackoverflow.com/) a été utilisé pour la 
 compréhension et utilisation des methodes pour le `STDIN`. 
-Des discussions sur le mattermost du cours ont aussi servi d'inspiraton dans ce travail.
+Des discussions sur le mattermost du cours ont aussi servis d'inspiraton dans ce travail.
 
 ## État du projet
 
@@ -119,7 +120,7 @@ https://gitlab.info.uqam.ca/salcedo_salcedo.renzo/h22-inf3135-tp1
 * [X] Le dépôt contient au moins un fichier `.gitignore`.
 * [X] Le fichier `Makefile` permet de compiler le projet lorsqu'on entre
   `make`. Il supporte les cibles `html`, `test` et `clean`.
-* [ ] Le nombre de tests qui réussissent/échouent avec la `make test` est
+* [X] Le nombre de tests qui réussissent/échouent avec la `make test` est
   indiqué quelque part dans le fichier `README.md`.
 * [ ] Les sections incomplètes de ce fichier (`README.md`) ont été complétées.
 * [ ] L'en-tête du fichier est documentée.
