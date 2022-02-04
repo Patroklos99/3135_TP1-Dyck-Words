@@ -11,6 +11,10 @@ qu'arguments.
 Lors d'une redirection les seuls arguments acceptés sont l'hauteur et l'aire. 
 Ils sont generés uniquement en ecrivant le mot `hauteur` et le mot `aire`.
 
+*Fichier Makefile:*
+Fichier qui contient la construction de chaque commande make. C'est-à-dire leur cible et leurs
+dépendences pour l'exécution correct.
+
 *Commandes make et leur rôle:*
 * `make:` Compile le fichier `motdedyck`.
 * `make test:` Execute les tests du fichier `check.bats` sur `motdedyck`. Ou Compile 
@@ -47,11 +51,11 @@ ou par rédirection en les plaçants dans un fichier `.txt`. Ecrivez `hauteur` o
 `./motdedyck` si vous voulez obtenir leurs valeurs respectives.
 
 Voici les regles à respecter pour vos entrées:
-* `Format:` ./motdedyck [HEIGHT,AREA] <LETTER 1> <LETTER 2> <WORD>
+* `Format:` ./motdedyck [HEIGHT,AREA] <LETTER 1> <LETTER 2> <\WORD>
 * Les des 2 caractères et le mot sont obligatoires.
 * Les deux caractères doivent être différents.
 * Le mot a une taille maximale de 40 caractères.
-* Le mot peut être composé uniquement des deux premieres caractères donnés.
+* Le mot peut être composé uniquement des deux premiers caractères donnés.
 * Les deux caractères ont exactement le même nombre d'occurrences.
 * Le 1er caractère a une valeur de +1 et le 2ieme a une valeur de -1, il est donc interdit
 que la valeur soit en dessous de l'axe des Y. (i.e `abba`).
@@ -78,7 +82,7 @@ $ ./motdedyck
 
 ## Tests
 
-Pour lancer les tests vous devez ecrire `make test` sur la ligne de commande.
+Pour lancer les tests ecrivez `make test` sur la ligne de commande.
 Vous obtiendrez les résultats du fichier `check.bats`, qui vous informera de vos tests réussis et ceux 
 échoués.
 
@@ -98,10 +102,6 @@ Cette commande exécute les tests du fichier `check.bats` sur `motdedyck`. Ou Co
 * [Pandoc](https://pandoc.org/).
 * [Make](https://www.gnu.org/software/make/).
 
-Indiquez les dépendances du projet, avec lien officiel. Il faudrait au moins
-mentionner GCC et [Bats](https://github.com/bats-core/bats-core). Utiliser une
-liste à puces pour donner la liste des dépendances.
-
 ## Références
 
 De facon générale le site [Stackoverflow](https://stackoverflow.com/) a été utilisé pour la 
@@ -117,7 +117,7 @@ https://gitlab.info.uqam.ca/salcedo_salcedo.renzo/h22-inf3135-tp1
   (Pénalité de **50%**).
 * [X] L'utilisateur `dogny_g` a accès au projet en mode *Developer*
   (Pénalité de **50%**).
-* [ ] Les correcteurs ont accès au projet en mode *Developer* (`id`à venir)
+* [X] Les correcteurs ont accès au projet en mode *Developer* (`id`à venir)
 * [X] Le dépôt GitLab est un *fork* de [ce
   dépôt](https://gitlab.info.uqam.ca/inf3135-sdo/h22-inf3135-tp1)
   (Pénalité de **50%**).
