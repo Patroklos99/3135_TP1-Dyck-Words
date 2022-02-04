@@ -16,11 +16,13 @@ qu'arguments.
 Lors d'une redirection les seuls arguments acceptés sont l'hauteur et l'aire. 
 Ils sont generés uniquement en ecrivant le mot `hauteur` et le mot `aire`.
 
+*Commandes make et leur rôle:*
 * `make:` Compile le fichier `motdedyck`.
+* `make test:` Execute les tests du fichier `check.bats` sur `motdedyck`. Ou Compile 
+`motdedyck.c` s'il ne l'est pas encore et execute les tests par la suite.
 * `make html:` Convertit `README.md` et `sujet.md` en fichiers html.
 * `make clean:` Efface les fichiers `\*.o` et/ou `\*.html` ainsi que tout autre type de fichier
 ce trouvant dans le fichier `gitignore`.
-
 
 Ce travail est realisé en vue du travail TP1 dans le cadre du cours Construction et
 maintenance de logiciels INF3135. Cours donné par Serge Dogny à l'Université de Québec à Montreal.
