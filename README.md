@@ -93,10 +93,10 @@ Cette commande exécute les tests du fichier `check.bats` sur `motdedyck`. Ou Co
 
 ## Dépendances
 
-* [GCC]
+* [GCC](https://gcc.gnu.org/).
 * [Bats](https://github.com/bats-core/bats-core).
-* [Pandoc]
-* [Make]
+* [Pandoc](https://pandoc.org/).
+* [Make](https://www.gnu.org/software/make/).
 
 Indiquez les dépendances du projet, avec lien officiel. Il faudrait au moins
 mentionner GCC et [Bats](https://github.com/bats-core/bats-core). Utiliser une
@@ -127,7 +127,7 @@ https://gitlab.info.uqam.ca/salcedo_salcedo.renzo/h22-inf3135-tp1
   `make`. Il supporte les cibles `html`, `test` et `clean`.
 * [X] Le nombre de tests qui réussissent/échouent avec la `make test` est
   indiqué quelque part dans le fichier `README.md`.
-* [ ] Les sections incomplètes de ce fichier (`README.md`) ont été complétées.
+* [X] Les sections incomplètes de ce fichier (`README.md`) ont été complétées.
 * [ ] L'en-tête du fichier est documentée.
 * [ ] L'en-tête des déclarations des fonctions est documentée (*docstring*).
 * [X] Le programme ne contient pas de valeurs magiques.
