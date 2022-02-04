@@ -105,4 +105,4 @@ https://gitlab.info.uqam.ca/salcedo_salcedo.renzo/h22-inf3135-tp1
 * [ ] Les sections incomplètes de ce fichier (`README.md`) ont été complétées.
 * [ ] L'en-tête du fichier est documentée.
 * [ ] L'en-tête des déclarations des fonctions est documentée (*docstring*).
-* [ ] Le programme ne contient pas de valeurs magiques.
+* [X] Le programme ne contient pas de valeurs magiques.
