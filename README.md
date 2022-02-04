@@ -33,11 +33,11 @@ Renzo Arturo Salcedo (SALR02089408).
 
 Pour commencer, compilez le fichier `motdedyck.c` avec la commande:
 ```
-gcc -o motdedyck -Wall -Wextra -std=c11 motdedyck.c
+$ gcc -o motdedyck -Wall -Wextra -std=c11 motdedyck.c
 ```
 ou
 ```
-make
+$ make
 ```
 Vous obtiendrez l'exécutable `motdedyck`. 
 
@@ -48,10 +48,10 @@ ou par rédirection en les plaçants dans un fichier `.txt`. Ecrivez `hauteur` o
 Voici les regles à respecter pour vos entrées:
 * `Format:` ./motdedyck [HEIGHT,AREA] <LETTER 1> <LETTER 2> <WORD>
 * Les des 2 caractères et le mot sont obligatoires.
-* Les deux caractères doivent être différentes.
-* le mot a une taille de plus de 40 caractères.
+* Les deux caractères doivent être différents.
+* le mot a une taille au plus de 40 caractères.
 * Le mot peut être composé uniquement des deux premieres caractères donnés.
-* Le deux caractères ont exactement le même nombre d'occurrences.
+* Les deux caractères ont exactement le même nombre d'occurrences.
 * Le 1er caractère a une valeur de +1 et le 2ieme a une valeur de -1, il est donc interdit
 que la valeur soit en dessous de l'axe des Y. (i.e abba).
 * Seuls les arguments `hauteur` ou `aire` sont acceptés.
@@ -59,7 +59,7 @@ que la valeur soit en dessous de l'axe des Y. (i.e abba).
 
 Voici une suite de tests valides comme exemple (stdin sur la ligne de commande commme arg):
 ```
-$ gcc -o motdedyck -Wall -Wextra -std=c11 
+$ gcc -o motdedyck -Wall -Wextra -std=c11 ou $ make 
 $ ./motdedyck a b aabb
 $ ./motdedyck hauteur a b aabb
 $ ./motdedyck aire a b aabb
@@ -68,10 +68,11 @@ $ ./motdedyck
 Voici une suite de tests valides comme exemple (par redirection):
 ```
 $ echo "a b aabb" > entree.txt
+$ gcc -o motdedyck -Wall -Wextra -std=c11 ou $ make
 $ ./motdedyck < entree.txt
 $ ./motdedyck hateur < entree.txt
 $ ./motdedyck aire < entree.txt
-$ /motdedyck
+$ ./motdedyck
 ```
 
 ## Tests
