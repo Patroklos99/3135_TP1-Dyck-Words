@@ -93,6 +93,11 @@ Cette commande exécute les tests du fichier `check.bats` sur `motdedyck`. Ou Co
 
 ## Dépendances
 
+* [GCC]
+* [Bats](https://github.com/bats-core/bats-core).
+* [Pandoc]
+* [Make]
+
 Indiquez les dépendances du projet, avec lien officiel. Il faudrait au moins
 mentionner GCC et [Bats](https://github.com/bats-core/bats-core). Utiliser une
 liste à puces pour donner la liste des dépendances.
