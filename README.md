@@ -10,8 +10,6 @@ Utiliser des listes à puces ou des énumérations le plus possible (plus agréa
 * `Makefile`: permet d'automatiser la compilation
 * etc.
 
-Bien aérer le contenu du fichier source (`README.md`). 
-
 ## Description
 
 Projet d'introduction au langage C. Ce projet demande des entrées par stdin et des arguments.
@@ -33,13 +31,13 @@ Renzo Arturo Salcedo (SALR02089408).
 
 ## Fonctionnement
 
-Premierement, compilez le fichier `motdedyck.c`.
+Pour commencer, compilez le fichier `motdedyck.c`.
 ```
 gcc -o motdedyck -Wall -Wextra -std=c11 motdedyck.c
 ```
 Vous obtiendrez l'exécutable `motdedyck`. 
 
-Deuxièmement ecrivez les entrées sur la ligne de commande (i.e `./motdedyck a b aabb`)
+Par la suite, ecrivez les entrées sur la ligne de commande (i.e `./motdedyck a b aabb`)
 ou par rédirection en les plaçants dans un fichier `.txt`. Ecrivez `hauteur` ou `aire` après 
 `./motdedyck` si vous voulez obtenir leurs valeurs respectives.
 
@@ -83,12 +81,12 @@ commande `gcc -o motdedyck -Wall -Wextra -std=c11 motdedyck.c` sera lancée en p
 un fichier `motdedyck`sera créé automatiquement. Il est possible aussi qu'un fichier 
 `motdedyck.o` soit créé.
 
-* `make:` *Compile le fichier `motdedyck`.*
-* `make test:` *Execute les tests du fichier `check.bats` sur `motdedyck`. Ou Compile 
-`motdedyck.c` s'il ne l'est pas encore et execute les tests par la suite.*
-* `make html:` *Convertit `README.md` et `sujet.md` en fichiers html.*
-* `make clean:` *Efface les fichiers `\*.o` et/ou `\*.html` ainsi que tout autre type de fichier
-ce trouvant dans le fichier `gitignore`.* 
+* `make:` Compile le fichier `motdedyck`.
+* `make test:` Execute les tests du fichier `check.bats` sur `motdedyck`. Ou Compile 
+* `motdedyck.c` s'il ne l'est pas encore et execute les tests par la suite.
+* `make html:` Convertit `README.md` et `sujet.md` en fichiers html.
+* `make clean:` Efface les fichiers `\*.o` et/ou `\*.html` ainsi que tout autre type de fichier
+ce trouvant dans le fichier `gitignore`.
 
 ## Dépendances
 
