@@ -24,7 +24,7 @@ maintenance de logiciels INF3135. Cours donné par Serge Dogny à l'Université 
 
 Lien vers le [sujet du travail](https://gitlab.info.uqam.ca/salcedo_salcedo.renzo/h22-inf3135-tp1/-/blob/master/sujet.md).
 
-*Tous les 11 tests ont étés réussis sur ma machine comme sur le serveur Labunix de l'UQAM*
+> *Tous les 11 tests ont étés réussis sur ma machine comme sur le serveur Labunix de l'UQAM*
 
 ## Auteur
 
@@ -33,11 +33,11 @@ Renzo Arturo Salcedo (SALR02089408).
 ## Fonctionnement
 
 Pour commencer, compilez le fichier `motdedyck.c` avec la commande:
-```
+```sh
 $ gcc -o motdedyck -Wall -Wextra -std=c11 motdedyck.c
 ```
 ou
-```
+```sh
 $ make
 ```
 Vous obtiendrez l'exécutable `motdedyck`. 
@@ -59,7 +59,7 @@ que la valeur soit en dessous de l'axe des Y. (i.e `abba`).
 * Pour obtenir le manuel du programme, exécutez `./motdedyck` uniquement.
 
 Voici une suite de tests valides comme exemple (stdin sur la ligne de commande commme arg):
-```
+```sh
 $ gcc -o motdedyck -Wall -Wextra -std=c11 ou $ make 
 $ ./motdedyck a b aabb
 $ ./motdedyck hauteur a b aabb
@@ -67,7 +67,7 @@ $ ./motdedyck aire a b aabb
 $ ./motdedyck
 ```
 Voici une suite de tests valides comme exemple (par redirection):
-```
+```sh
 $ echo "a b aabb" > entree.txt
 $ gcc -o motdedyck -Wall -Wextra -std=c11 ou $ make
 $ ./motdedyck < entree.txt
@@ -85,7 +85,7 @@ Vous obtiendrez les résultats du fichier `check.bats`, qui vous informera de vo
 Si vous n'avez pas le fichier `motdedyck` avant de lancer cette commande, la 
 commande `gcc -o motdedyck -Wall -Wextra -std=c11 motdedyck.c` sera lancée en parellèle et 
 un fichier `motdedyck`sera créé automatiquement. 
-```
+```sh
 $ make test
 ``` 
 Cette commande exécute les tests du fichier `check.bats` sur `motdedyck`. Ou Compile 
