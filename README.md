@@ -1,11 +1,6 @@
 # TP1: Chemins de Dyck
 
 
-
-
-* `README.md`: ce fichier
-* `Makefile`: permet d'automatiser la compilation
-
 ## Description
 
 Projet d'introduction au langage C. Ce projet demande des entrées par stdin et des arguments.
@@ -82,15 +77,17 @@ $ ./motdedyck
 ## Tests
 
 Pour lancer les tests vous devez ecrire `make test` sur la ligne de commande.
-Vous obtiendrez les resultats du fichier `check.bats`, qui vous informera de vos tests réussis et ceux 
+Vous obtiendrez les résultats du fichier `check.bats`, qui vous informera de vos tests réussis et ceux 
 échoués.
 
 Si vous n'avez pas le fichier `motdedyck` avant de lancer cette commande, la 
 commande `gcc -o motdedyck -Wall -Wextra -std=c11 motdedyck.c` sera lancée en parellèle et 
 un fichier `motdedyck`sera créé automatiquement. Il est possible aussi qu'un fichier 
 `motdedyck.o` soit créé.
-
-* `make test:` Execute les tests du fichier `check.bats` sur `motdedyck`. Ou Compile 
+```
+* make test
+``` 
+Cette commande exécute les tests du fichier `check.bats` sur `motdedyck`. Ou Compile 
 `motdedyck.c` s'il ne l'est pas encore et execute les tests par la suite.
 
 ## Dépendances
