@@ -16,6 +16,12 @@ qu'arguments.
 Lors d'une redirection les seuls arguments acceptés sont l'hauteur et l'aire. 
 Ils sont generés uniquement en ecrivant le mot `hauteur` et le mot `aire`.
 
+* `make:` Compile le fichier `motdedyck`.
+* `make html:` Convertit `README.md` et `sujet.md` en fichiers html.
+* `make clean:` Efface les fichiers `\*.o` et/ou `\*.html` ainsi que tout autre type de fichier
+ce trouvant dans le fichier `gitignore`.
+
+
 Ce travail est realisé en vue du travail TP1 dans le cadre du cours Construction et
 maintenance de logiciels INF3135. Cours donné par Serge Dogny à l'Université de Québec à Montreal.
 
@@ -66,7 +72,7 @@ Voici une suite de tests valides comme exemple (par redirection):
 $ echo "a b aabb" > entree.txt
 $ gcc -o motdedyck -Wall -Wextra -std=c11 ou $ make
 $ ./motdedyck < entree.txt
-$ ./motdedyck hateur < entree.txt
+$ ./motdedyck hauteur < entree.txt
 $ ./motdedyck aire < entree.txt
 $ ./motdedyck
 ```
@@ -82,12 +88,8 @@ commande `gcc -o motdedyck -Wall -Wextra -std=c11 motdedyck.c` sera lancée en p
 un fichier `motdedyck`sera créé automatiquement. Il est possible aussi qu'un fichier 
 `motdedyck.o` soit créé.
 
-* `make:` Compile le fichier `motdedyck`.
 * `make test:` Execute les tests du fichier `check.bats` sur `motdedyck`. Ou Compile 
-* `motdedyck.c` s'il ne l'est pas encore et execute les tests par la suite.
-* `make html:` Convertit `README.md` et `sujet.md` en fichiers html.
-* `make clean:` Efface les fichiers `\*.o` et/ou `\*.html` ainsi que tout autre type de fichier
-ce trouvant dans le fichier `gitignore`.
+`motdedyck.c` s'il ne l'est pas encore et execute les tests par la suite.
 
 ## Dépendances
 
