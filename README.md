@@ -31,9 +31,13 @@ Renzo Arturo Salcedo (SALR02089408).
 
 ## Fonctionnement
 
-Pour commencer, compilez le fichier `motdedyck.c`.
+Pour commencer, compilez le fichier `motdedyck.c` avec la commande:
 ```
 gcc -o motdedyck -Wall -Wextra -std=c11 motdedyck.c
+```
+ou
+```
+make
 ```
 Vous obtiendrez l'exécutable `motdedyck`. 
 
