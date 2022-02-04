@@ -1,14 +1,10 @@
 # TP1: Chemins de Dyck
 
 
-## Format Markdown (supprimer cette section avant la remise)
 
-Utiliser des listes à puces ou des énumérations le plus possible (plus agréable
-à lire). Par exemple, pour décrire le contenu du projet:
 
 * `README.md`: ce fichier
 * `Makefile`: permet d'automatiser la compilation
-* etc.
 
 ## Description
 
@@ -103,7 +99,7 @@ liste à puces pour donner la liste des dépendances.
 
 De facon générale le site [Stackoverflow](https://stackoverflow.com/) a été utilisé pour la 
 compréhension et utilisation des methodes pour le `STDIN`. 
-Des discussions sur le mattermost du cours ont servi d'inspiraton dans ce travail.
+Des discussions sur le mattermost du cours ont aussi servi d'inspiraton dans ce travail.
 
 ## État du projet
 
