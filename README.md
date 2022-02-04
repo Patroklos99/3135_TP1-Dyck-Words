@@ -48,15 +48,43 @@ Renzo Arturo Salcedo (SALR02089408).
 
 ## Fonctionnement
 
-Premierement assemblez et compiler le fichier `motdedyck.c`. 
+Premierement compiler le fichier `motdedyck.c`. 
 Vous obtiendrez l'exécutable `motdedyck`. 
 
-Deuxièmement ajoutez les entrees par la ligne de commande en les écrivant `./motdedyck a b aabb`
-ou par rédirection en les plaçants dans un fichier .txt 
+Deuxièmement ecrivez les entrées par la ligne de commande (i.e `./motdedyck a b aabb`)
+ou par rédirection en les plaçants dans un fichier `.txt`. Ecrivez `hauteur` ou `aire` après 
+`./motdedyck` si vous voulez obtenir leurs valeurs respectives.
 
-Expliquez d'abord en mots comment faire fonctionner le projet (imaginez que la
-personne qui l'utilisera ne connaît pas C, ne connaît pas le projet et souhaite
-seulement saisir une série de commandes pour l'exécuter). En particulier,
+Voici les regles à respecter pour pour vos entrées:
+* `Format:` ./motdedyck [HEIGHT,AREA] <LETTER 1> <LETTER 2> <WORD>
+* Les des 2 caractères et le mot sont obligatoires.
+* Les deux caractères doivent être différentes.
+* le mot a une taille de plus de 40 caractères.
+* Le mot peut être composé uniquement des deux premieres caractères donnés.
+* Le deux caractères ont exactement le même nombre d'occurrences.
+* Le 1er caractère a une valeur de +1 et le 2ieme a une valeur de -1, il est donc interdit
+que la valeur soit en dessous de l'axe des Y. (i.e abba).
+* Seuls les arguments `hauteur` ou `aire` sont acceptés.
+* Pour obtenir le manuel du programme, exécutez `./motdedyck` uniquement.
+
+Voici une suite de tests valides comme exemples (stdin sur la ligne de commande commme arg) :
+```
+$ gcc -o motdedyck -Wall -Wextra -std=c11 
+$ ./motdedyck a b aabb
+$ ./motdedyck hauteur a b aabb
+$ ./motdedyck aire a b aabb
+$ ./motdedyck
+```
+Voici une suite de tests valides comme exemple: (par redirection)
+```
+$ echo "a b aabb" > entree.txt
+$ ./motdedyck < entree.txt
+$ ./motdedyck hateur < entree.txt
+$ ./motdedyck aire < entree.txt
+$ /motdedyck
+```
+
+souhaite saisir une série de commandes pour l'exécuter). En particulier,
 indiquez les commandes qui doivent être entrées pour la compilation et
 l'exécution.
 
