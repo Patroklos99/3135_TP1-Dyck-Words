@@ -3,19 +3,6 @@
 
 ## Format Markdown (supprimer cette section avant la remise)
 
-Sauter une ligne pour changer de paragraphe.
-
-Mettre les noms de fichier et bout de code courts entre apostrophes inversés.
-Par exemple, si vous parlez du fichier `Makefile`.
-
-Mettre les longs bouts de code dans des blocs de code (triples apostrophes
-inversés). Par exemple, vous pouvez donner un exemple de commande comme suit:
-
-```sh
-$ make
-$ ls -a
-```
-
 Utiliser des listes à puces ou des énumérations le plus possible (plus agréable
 à lire). Par exemple, pour décrire le contenu du projet:
 
@@ -23,9 +10,7 @@ Utiliser des listes à puces ou des énumérations le plus possible (plus agréa
 * `Makefile`: permet d'automatiser la compilation
 * etc.
 
-Bien aérer le contenu du fichier source (`README.md`). Éviter les longues
-lignes dans le fichier Markdown (par exemple, limiter à 80) pour une meilleure
-lisibilité avec un éditeur de texte.
+Bien aérer le contenu du fichier source (`README.md`). 
 
 ## Description
 
@@ -34,8 +19,8 @@ Fait l'affichage d'une image ASCII, de l'hauteur, de l'aire ou du manuel d'usage
 
 Les entrées demandées par stdin seront transmises à travers un fichier entree.txt ou en tant
 qu'arguments.
-Les seuls arguments acceptés sont l'hauteur et l'aire. Ils sont generés uniquement en ecrivant 
-le mot `hauteur` et le mot `aire`.
+Lors d'une redirection les seuls arguments acceptés sont l'hauteur et l'aire. 
+Ils sont generés uniquement en ecrivant le mot `hauteur` et le mot `aire`.
 
 Ce travail est realisé en vue du travail TP1 dans le cadre du cours Construction et
 maintenance de logiciels INF3135. Cours donné par Serge Dogny à l'Université de Québec à Montreal.
@@ -48,14 +33,17 @@ Renzo Arturo Salcedo (SALR02089408).
 
 ## Fonctionnement
 
-Premierement compiler le fichier `motdedyck.c`. 
+Premierement, compilez le fichier `motdedyck.c`.
+```
+gcc -o motdedyck -Wall -Wextra -std=c11 motdedyck.c
+```
 Vous obtiendrez l'exécutable `motdedyck`. 
 
-Deuxièmement ecrivez les entrées par la ligne de commande (i.e `./motdedyck a b aabb`)
+Deuxièmement ecrivez les entrées sur la ligne de commande (i.e `./motdedyck a b aabb`)
 ou par rédirection en les plaçants dans un fichier `.txt`. Ecrivez `hauteur` ou `aire` après 
 `./motdedyck` si vous voulez obtenir leurs valeurs respectives.
 
-Voici les regles à respecter pour pour vos entrées:
+Voici les regles à respecter pour vos entrées:
 * `Format:` ./motdedyck [HEIGHT,AREA] <LETTER 1> <LETTER 2> <WORD>
 * Les des 2 caractères et le mot sont obligatoires.
 * Les deux caractères doivent être différentes.
@@ -67,7 +55,7 @@ que la valeur soit en dessous de l'axe des Y. (i.e abba).
 * Seuls les arguments `hauteur` ou `aire` sont acceptés.
 * Pour obtenir le manuel du programme, exécutez `./motdedyck` uniquement.
 
-Voici une suite de tests valides comme exemples (stdin sur la ligne de commande commme arg) :
+Voici une suite de tests valides comme exemple (stdin sur la ligne de commande commme arg):
 ```
 $ gcc -o motdedyck -Wall -Wextra -std=c11 
 $ ./motdedyck a b aabb
@@ -75,7 +63,7 @@ $ ./motdedyck hauteur a b aabb
 $ ./motdedyck aire a b aabb
 $ ./motdedyck
 ```
-Voici une suite de tests valides comme exemple: (par redirection)
+Voici une suite de tests valides comme exemple (par redirection):
 ```
 $ echo "a b aabb" > entree.txt
 $ ./motdedyck < entree.txt
@@ -83,10 +71,6 @@ $ ./motdedyck hateur < entree.txt
 $ ./motdedyck aire < entree.txt
 $ /motdedyck
 ```
-
-souhaite saisir une série de commandes pour l'exécuter). En particulier,
-indiquez les commandes qui doivent être entrées pour la compilation et
-l'exécution.
 
 ## Tests
 
@@ -98,6 +82,13 @@ Si vous n'avez pas le fichier `motdedyck` avant de lancer cette commande, la
 commande `gcc -o motdedyck -Wall -Wextra -std=c11 motdedyck.c` sera lancée en parellèle et 
 un fichier `motdedyck`sera créé automatiquement. Il est possible aussi qu'un fichier 
 `motdedyck.o` soit créé.
+
+* `make:` *Compile le fichier `motdedyck`.*
+* `make test:` *Execute les tests du fichier `check.bats` sur `motdedyck`. Ou Compile 
+`motdedyck.c` s'il ne l'est pas encore et execute les tests par la suite.*
+* `make html:` *Convertit `README.md` et `sujet.md` en fichiers html.*
+* `make clean:` *Efface les fichiers `\*.o` et/ou `\*.html` ainsi que tout autre type de fichier
+ce trouvant dans le fichier `gitignore`.* 
 
 ## Dépendances
 
