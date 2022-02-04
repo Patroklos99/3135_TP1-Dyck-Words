@@ -24,7 +24,7 @@ maintenance de logiciels INF3135. Cours donné par Serge Dogny à l'Université 
 
 Lien vers le [sujet du travail](https://gitlab.info.uqam.ca/salcedo_salcedo.renzo/h22-inf3135-tp1/-/blob/master/sujet.md).
 
-> *Tous les 11 tests ont étés réussis sur ma machine comme sur le serveur Labunix de l'UQAM*
+***Tous les 11 tests ont étés réussis sur ma machine comme sur le serveur Labunix de l'UQAM***
 
 ## Auteur
 
