@@ -130,6 +130,6 @@ https://gitlab.info.uqam.ca/salcedo_salcedo.renzo/h22-inf3135-tp1
 * [X] Le nombre de tests qui réussissent/échouent avec la `make test` est
   indiqué quelque part dans le fichier `README.md`.
 * [X] Les sections incomplètes de ce fichier (`README.md`) ont été complétées.
-* [ ] L'en-tête du fichier est documentée.
-* [x] L'en-tête des déclarations des fonctions est documentée (*docstring*).
+* [X] L'en-tête du fichier est documentée.
+* [X] L'en-tête des déclarations des fonctions est documentée (*docstring*).
 * [X] Le programme ne contient pas de valeurs magiques.

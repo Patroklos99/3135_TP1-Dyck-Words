@@ -1,3 +1,15 @@
+/**
+ *  Auteur: Renzo Arturo Salcedo
+ *  Code Permanent: SALR02089408
+ *  Cours: INF3135 TP1 UQAM
+ *  Session: Hiver 2022
+ *
+ *  Classe motdedyck.c
+ *  Represente l'unique classe contenant le main et autres fonctions.
+ *  Affiche l'image ASCII, l'hauteur, l'aire, le manuel ou un message d'erreur sur stdin, selon des entrées soumises.
+ *
+ */
+
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
@@ -106,8 +118,8 @@ void insererAsterikx(char tab[40][40]) {
 };
 
 /*
- * Valide les arguments recus par le programme. Affiche la hauteur ou l'aire ou arrête le programme
- * si l'argument est invalide.
+ * Valide les arguments recus par le programme. Affiche la hauteur ou l'aire ou affiche l'erreur correspondate et
+ * arrête le programme si l'argument est invalide.
  *
  * @param argc nb d'arguments.
  * @param **argc pointeur du tableau contenant les arguments.
@@ -204,6 +216,19 @@ bool validerLongueurMot(motDeDyck motDeDyck1) {
 }
 
 /*
+ * Valide le nb arguments recus par le programme. Affiche l'erreur correspndate et arrête le programme s'il y a plus
+ * qu'un argument valide
+ *
+ * @param argc nb d'arguments.
+ * */
+void validerNbArgument(int argc) {
+    if (argc > 2){
+        printf("argument invalide\n");
+        exit(0);
+    }
+}
+
+/*
  * Distribue les arguments ou entrées redirectionnées, vers leur variable correspondate, selon la forme des
  * qu'ils sont soumis. Affiche le manuel si aucun argument/entrée sont soumis à l'exécution et arrête le programme.
  *
@@ -219,7 +244,8 @@ void distribuerEntrees_Args(char *mddCharUn, char *mddCharDeux, char *mddMot, in
 
     pos = ftell(stdin);
     fseek(stdin, 0, SEEK_END);
-    if (pos - ftell(stdin)) {
+    if (pos - ftell(stdin) ) {
+        validerNbArgument(argc);
         rewind(stdin);
         fgets(arr, 100, stdin);
         sscanf(arr, "%s %s %s", mddCharUn, mddCharDeux, mddMot);
