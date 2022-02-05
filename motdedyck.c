@@ -2,7 +2,8 @@
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#define TAILLE_MOT 40
+#define TAILLE_MOT 80
+#define TAILLE_CHAR 3
 #define USAGE "\
 Usage: %s [HEIGHT,AREA] <LETTER 1> <LETTER 2> <WORD>\n\
 \n\
@@ -20,12 +21,13 @@ Program parameters :\n\
   WORD                      Word of dyck to draw.\n\
   "
 
-
-struct motDeDyck {
+typedef struct {
     char mot[TAILLE_MOT];   //Le mot saisi
-    char haut;              //Caractere ascendant
-    char bas;               //Caractere descendant
-};
+    char charUn[TAILLE_CHAR];              //Caractere ascendant
+    char charDeux[TAILLE_CHAR];               //Caractere descendant
+    bool valeur;
+
+} motDeDyck;
 
 enum error {
     OK = 0,
@@ -37,145 +39,158 @@ enum error {
 };
 
 
-bool verifierLettres(const char *nombre, const char *un, const char *deux) {
-    bool valeur;
-    int p = 0;
-    int l = 0;
+bool validerLettre(const char *nombre, const char *un, const char *deux, bool valeur) {
 
     for (int i = 0; nombre[i] != '\0'; ++i) {
-        if (nombre[i] == un[0] || nombre[i] == deux[0]) {
-            valeur = true;
-        } else {
+        if (nombre[i] != un[0] && nombre[i] != deux[0]) {
             valeur = false;
+            printf("lettre interdite\n");
             break;
         }
-    }
-    if (valeur) {
-        for (int k = 0; nombre[k]; k++) {
-            if (nombre[k] == un[0]) {
-                p++;
-            }
-        }
-        for (int k = 0; nombre[k]; k++) {
-            if (nombre[k] == deux[0]) {
-                l++;
-            }
-        }
-        if (p != l) {
-            printf("mot non equilibre\n");
-            exit(0);
-        }
-
     }
     return valeur;
 }
 
-int main(int argc, char *argv[]) {
-    char arr[100];
-    char un[3] = "\0";
-    char deux[3] = "\0";
-    char trois[40];
+void validerEquilibre(bool valeur, const char *nombre, const char *un) {
+    int nbCharUn = 0;
+    int nbCharDeux = 0;
+
+    if (valeur) {
+        for (int k = 0; nombre[k]; k++) {
+            nombre[k] == un[0] ? nbCharUn++ : nbCharDeux++;
+        }
+        if (nbCharUn != nbCharDeux) {
+            printf("mot non equilibre\n");
+            exit(0);
+        }
+    }
+};
+
+void validerEquilibreAxial(int positionX) {
+    if (positionX < 0) {
+        printf("mot non equilibre\n");
+        exit(0);
+    }
+};
+
+void insererAsterikx(char tab[40][40]) {
+    for (int i = 0; i < 40; ++i) {
+        for (int j = 0; j < 40; ++j) {
+            if (tab[i][j] == '\0') {
+                tab[i][j] = '*';
+            }
+        }
+    }
+};
+
+void validerArgument(int argc, char **argv, const int *hauteurMax, int aire) {
+    if (argc >= 2) {
+        if ((argc == 2 || argc == 5) && (strcmp(argv[1], "hauteur") == 0 || strcmp(argv[1], "hauteur") == 0)) {
+            printf("%d\n", *hauteurMax);
+            exit(0);
+        } else if ((argc == 2 || argc == 5) && (strcmp(argv[1], "aire") == 0 || strcmp(argv[1], "aire") == 0)) {
+            printf("%d\n", aire);
+            exit(0);
+        } else if ((argc == 2 || argc == 5) && (strcmp(argv[1], "hauteur") != 0 || strcmp(argv[1], "aire") != 0)) {
+            printf("argument invalide\n");
+            exit(0);
+        }
+    }
+};
+
+void afficherAscii(int argc, const int *hauteurMax, int psitionY, char tab[40][40]) {
+    if (argc == 1 || argc == 4) {
+        for (int i = *hauteurMax - 1; i >= 0; --i) {
+            for (int j = 0; j < psitionY; ++j) {
+                printf("%c", tab[i][j]);
+            }
+            printf("\n");
+        }
+    }
+};
+
+void validerDonnees(int argc, motDeDyck motDeDyck1) {
+    if (strlen(motDeDyck1.charUn) != 1 || strlen(motDeDyck1.charDeux) != 1 || motDeDyck1.mot[0] == 0 ||
+        motDeDyck1.charUn[0] == motDeDyck1.charDeux[0]
+        || argc == 3 || argc > 5) {
+        printf("donnees invalides\n");
+        exit(0);
+    }
+};
+
+void insererBarres(motDeDyck motDeDyck1, char tab[40][40], int *hauteurMax, int *aire, int *psitionY) {
+    int positionX = 0;
+    int positionY = 0;
+
+    for (int i = 0; motDeDyck1.mot[i] != '\0'; ++i) {
+        if (motDeDyck1.mot[i] == motDeDyck1.charUn[0]) {
+            tab[positionX][positionY] = '/';
+            positionX++;
+            positionY++;
+        } else {
+            positionX--;
+            tab[positionX][positionY] = '\\';
+            positionY++;
+        }
+        if (*hauteurMax < positionX)
+            *hauteurMax = positionX;
+        validerEquilibreAxial(positionX);
+        *aire += positionX;
+    }
+    *psitionY = positionY;
+}
+
+bool validerLongueurMot(motDeDyck motDeDyck1) {
+    bool validation = false;
+    strlen(motDeDyck1.mot) <= 40 ? validation = true : printf("mot trop long\n");
+    return validation;
+}
+
+void distribuerEntrees_Args(char *motDeDyckUn, char *motDeDyckDeux, char *motDeDyckTrois, int argc, char **argv) {
     int pos;
-    int x = 0;
-    int y = 0;
-    int max = -1;
-    int aire = 0;	
+    char arr[100];
 
     pos = ftell(stdin);
     fseek(stdin, 0, SEEK_END);
-    if (pos - ftell(stdin) ) {
+    if (pos - ftell(stdin)) {
         rewind(stdin);
         fgets(arr, 100, stdin);
-        sscanf(arr, "%s %s %s", un, deux, trois);
+        sscanf(arr, "%s %s %s", motDeDyckUn, motDeDyckDeux, motDeDyckTrois);
     } else if (argc == 4) {
-        un[0] = *argv[1];
-        deux[0] = *argv[2];
-        strcpy(trois, argv[3]);
+        strcpy((char *) motDeDyckUn, argv[1]);
+        strcpy((char *) motDeDyckDeux, argv[2]);
+        strcpy((char *) motDeDyckTrois, argv[3]);
     } else if (argc == 5) {
-        un[0] = *argv[2];
-        deux[0] = *argv[3];
-        strcpy(trois, argv[4]);
+        strcpy((char *) motDeDyckUn, argv[2]);
+        strcpy((char *) motDeDyckDeux, argv[3]);
+        strcpy((char *) motDeDyckTrois, argv[4]);
     } else if (argc == 1) {
         printf(USAGE, "./motdedyck");
         exit(0);
-    } else {
-        printf("donnees invalides\n");
-        exit(0);
     }
+}
 
-    /*fgets(arr, 100, stdin);
-    sscanf(arr, "%s %s %s", &un, &deux, &trois);*/
+int main(int argc, char *argv[]) {
+    motDeDyck motDeDyck1 = {{0}, {0}, {0}, true};
 
-    if (strlen(un) != 1 || strlen(deux) != 1 || trois[0] == 0 || un[0] == deux[0]) {
-        printf("donnees invalides\n");
-        exit(0);
-    }
+    int psitionY = 0;
+    int hauteurMax = -1;
+    int aire = 0;
+    char tab[40][40] = {0};
 
-    if (un[0] == 0 && deux[0] == 0 && trois[0] == 0 && argc == 1) {
-        printf("Texte du man\n");
-        exit(0);
-    }
-
-    if (strlen(trois) <= 40) {
-        if (verifierLettres(trois, un, deux)) {
-            char tab[100][100];
-
-            for (int i = 0; trois[i] != '\0'; ++i) {
-                if (trois[i] == un[0]) {
-                    tab[x][y] = '/';
-                    x++;
-                    y++;
-                } else {
-                    x--;
-                    tab[x][y] = '\\';
-                    y++;
-                }
-                if (max < x) {
-                    max = x;
-                }
-                if (x < 0) {
-                    printf("mot non equilibre\n");
-                    exit(0);
-                }
-		aire += x;
-            }
-
-            for (int i = 0; i < 40; ++i) {
-                for (int j = 0; j < 40; ++j) {
-                    if (tab[i][j] == '\0') {
-                        tab[i][j] = '*';
-                    }
-                }
-            }
-            if (argc >= 2) {
-                if ((argc == 2 || argc == 5) && (strcmp(argv[1], "hauteur") == 0 || strcmp(argv[1], "hauteur") == 0)) {
-                    printf("%d\n", max);
-                    exit(0);
-                } else if ((argc == 2 || argc == 5) && (strcmp(argv[1], "aire") == 0 || strcmp(argv[1], "aire") == 0)) {
-                    //int aire = (max * y) / 2;
-                    printf("%d\n", aire);
-                    exit(0);
-                } else if ((argc == 2 || argc == 5) && (strcmp(argv[1], "hauteur") != 0 || strcmp(argv[1], "aire") != 0)) {
-                    printf("argument invalide\n");
-                    exit(0);
-                }
-            }
-            if (argc == 1 || argc == 4) {
-                for (int i = max - 1; i >= 0; --i) {
-                    for (int j = 0; j < y; ++j) {
-                        printf("%c", tab[i][j]);
-                    }
-                    printf("\n");
-                }
-            }
-
-        } else {
-            printf("lettre interdite\n");
+    distribuerEntrees_Args((char *) &motDeDyck1.charUn, (char *) &motDeDyck1.charDeux, (char *) &motDeDyck1.mot, argc, argv);
+    validerDonnees(argc, motDeDyck1);
+    if (validerLongueurMot(motDeDyck1)) {
+        if (validerLettre(motDeDyck1.mot, motDeDyck1.charUn, motDeDyck1.charDeux, motDeDyck1.valeur)) {
+            insererBarres(motDeDyck1, tab, &hauteurMax, &aire, &psitionY);
+            validerEquilibre(motDeDyck1.valeur, motDeDyck1.mot, motDeDyck1.charUn);
+            insererAsterikx(tab);
+            validerArgument(argc, argv, &hauteurMax, aire);
+            afficherAscii(argc, &hauteurMax, psitionY, tab);
         }
-    } else {
-        printf("mot trop long\n");
     }
     return 0;
 }
+
 
 

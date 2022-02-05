@@ -11,8 +11,8 @@ qu'arguments.
 Lors d'une redirection les seuls arguments acceptés sont l'hauteur et l'aire. 
 Ils sont generés uniquement en ecrivant le mot `hauteur` et le mot `aire`.
 
-*Fichier Makefile:*
-Fichier qui contient la construction de chaque commande make. C'est-à-dire leur cible et leurs
+*Fichier `Makefile:`*
+Il contient la construction de chaque commande make. C'est-à-dire leur cible et leurs
 dépendences pour l'exécution correct.
 
 *Commandes make et leur rôle:*
