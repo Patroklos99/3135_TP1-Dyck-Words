@@ -101,6 +101,8 @@ Cette commande exécute les tests du fichier `check.bats` sur `motdedyck`. Ou Co
 * [Bats](https://github.com/bats-core/bats-core).
 * [Pandoc](https://pandoc.org/).
 * [Make](https://www.gnu.org/software/make/).
+* [Git](https://git-scm.com/).
+ 
 
 ## Références
 
@@ -129,5 +131,5 @@ https://gitlab.info.uqam.ca/salcedo_salcedo.renzo/h22-inf3135-tp1
   indiqué quelque part dans le fichier `README.md`.
 * [X] Les sections incomplètes de ce fichier (`README.md`) ont été complétées.
 * [ ] L'en-tête du fichier est documentée.
-* [ ] L'en-tête des déclarations des fonctions est documentée (*docstring*).
+* [x] L'en-tête des déclarations des fonctions est documentée (*docstring*).
 * [X] Le programme ne contient pas de valeurs magiques.

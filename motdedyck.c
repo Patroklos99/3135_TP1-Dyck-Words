@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
+
 #define TAILLE_MOT 80
 #define TAILLE_CHAR 3
 #define USAGE "\
@@ -38,26 +39,36 @@ enum error {
     ERREUR_MOT_NON_EQUILIBRE = 5
 };
 
-
-bool validerLettre(const char *nombre, const char *un, const char *deux, bool valeur) {
-
-    for (int i = 0; nombre[i] != '\0'; ++i) {
-        if (nombre[i] != un[0] && nombre[i] != deux[0]) {
-            valeur = false;
+/*
+ * Valide que le mot contient seulement les deux caractères données.
+ *
+ * @param motDeDyck1 reference vers structure contenant les variables requises.
+ * @return valeur booleenne de l'operation
+ * */
+bool validerLettre(motDeDyck motDeDyck1) {
+    for (int i = 0; motDeDyck1.mot[i] != '\0'; ++i) {
+        if (motDeDyck1.mot[i] != motDeDyck1.charUn[0] && motDeDyck1.mot[i] != motDeDyck1.charDeux[0]) {
+            motDeDyck1.valeur = false;
             printf("lettre interdite\n");
             break;
         }
     }
-    return valeur;
+    return motDeDyck1.valeur;
 }
 
-void validerEquilibre(bool valeur, const char *nombre, const char *un) {
+/*
+ * Valide l'equilibre du mot selon le nb d'occurrences des 2 caractères. Affiche l'erreur
+ * assignée et arrête le programme si le mot est non equilibré.
+ *
+ * @param motDeDyck1 reference vers structure contenant les variables requises.
+ * */
+void validerEquilibre(motDeDyck motDeDyck1) {
     int nbCharUn = 0;
     int nbCharDeux = 0;
 
-    if (valeur) {
-        for (int k = 0; nombre[k]; k++) {
-            nombre[k] == un[0] ? nbCharUn++ : nbCharDeux++;
+    if (motDeDyck1.valeur) {
+        for (int k = 0; motDeDyck1.mot[k]; k++) {
+            motDeDyck1.mot[k] == motDeDyck1.charUn[0] ? nbCharUn++ : nbCharDeux++;
         }
         if (nbCharUn != nbCharDeux) {
             printf("mot non equilibre\n");
@@ -66,13 +77,24 @@ void validerEquilibre(bool valeur, const char *nombre, const char *un) {
     }
 };
 
-void validerEquilibreAxial(int positionX) {
-    if (positionX < 0) {
+/*
+ * Valide l'equilibre du mot selon la valeur axialle Y. Affiche l'erreur et arrête le programme
+ * si le mot n'est pas equilibré.
+ *
+ * @param positionY Valeur continue de Y par rapport au son seuil 0.
+ * */
+void validerEquilibreAxial(int positionY) {
+    if (positionY < 0) {
         printf("mot non equilibre\n");
         exit(0);
     }
 };
 
+/*
+ * Insere des asteriques dans les cases vides de l'array 2D
+ *
+ * @param tab Array 2d de [40]x[40].
+ * */
 void insererAsterikx(char tab[40][40]) {
     for (int i = 0; i < 40; ++i) {
         for (int j = 0; j < 40; ++j) {
@@ -83,10 +105,19 @@ void insererAsterikx(char tab[40][40]) {
     }
 };
 
-void validerArgument(int argc, char **argv, const int *hauteurMax, int aire) {
+/*
+ * Valide les arguments recus par le programme. Affiche la hauteur ou l'aire ou arrête le programme
+ * si l'argument est invalide.
+ *
+ * @param argc nb d'arguments.
+ * @param **argc pointeur du tableau contenant les arguments.
+ * @param hauteurMax valeur de l'hauteur de l'image ASCII.
+ * @param aire valeur de l'aire sous la courbe de l'image ASCII.
+ * */
+void validerArgument(int argc, char **argv, const int hauteurMax, int aire) {
     if (argc >= 2) {
         if ((argc == 2 || argc == 5) && (strcmp(argv[1], "hauteur") == 0 || strcmp(argv[1], "hauteur") == 0)) {
-            printf("%d\n", *hauteurMax);
+            printf("%d\n", hauteurMax);
             exit(0);
         } else if ((argc == 2 || argc == 5) && (strcmp(argv[1], "aire") == 0 || strcmp(argv[1], "aire") == 0)) {
             printf("%d\n", aire);
@@ -98,54 +129,90 @@ void validerArgument(int argc, char **argv, const int *hauteurMax, int aire) {
     }
 };
 
-void afficherAscii(int argc, const int *hauteurMax, int psitionY, char tab[40][40]) {
-    if (argc == 1 || argc == 4) {
-        for (int i = *hauteurMax - 1; i >= 0; --i) {
-            for (int j = 0; j < psitionY; ++j) {
-                printf("%c", tab[i][j]);
-            }
-            printf("\n");
+/*
+ * Affiche une partie du tableau 2D à partir des coordonnées hauteurMax (longueur) * psitionY (largeur)
+ *
+ * @param hauteurMax valeur de l'hauteur de l'image ASCII.
+ * @param psitionY valeur de la largeur max l'image.
+ * @param tab Array 2d de [40]x[40].
+ * */
+void afficherAscii(const int hauteurMax, int psitionY, char tab[40][40]) {
+    for (int i = hauteurMax - 1; i >= 0; --i) {
+        for (int j = 0; j < psitionY; ++j) {
+            printf("%c", tab[i][j]);
         }
+        printf("\n");
     }
 };
 
+/*
+ * Valide les 3 exigences pour les données. Affiche l'erreur correspondante et arrête le programme si il y a des
+ * données invalides.
+ *
+ * @param argc nb d'arguments.
+ * @param motDeDyck1 reference vers structure contenant les variables requises.
+ * */
 void validerDonnees(int argc, motDeDyck motDeDyck1) {
     if (strlen(motDeDyck1.charUn) != 1 || strlen(motDeDyck1.charDeux) != 1 || motDeDyck1.mot[0] == 0 ||
-        motDeDyck1.charUn[0] == motDeDyck1.charDeux[0]
-        || argc == 3 || argc > 5) {
+        motDeDyck1.charUn[0] == motDeDyck1.charDeux[0] || argc == 3 || argc > 5) {
         printf("donnees invalides\n");
         exit(0);
     }
 };
 
+/*
+ * Insere les caractères / ou \ dans leur coordonnée correspondante.
+ *
+ * @param motDeDyck1 reference vers structure contenant les variables requises.
+ * @param tab Array 2d de [40]x[40].
+ * @param *hauteurMax pointeur pour le calcul et sauvegarde de cette variable.
+ * @param *aire pointeur pour le calcul et sauvegarde de cette variable.
+ * @param *psitionY pointeur pour la sauvegarde de la nouvelle valeur.
+ * */
 void insererBarres(motDeDyck motDeDyck1, char tab[40][40], int *hauteurMax, int *aire, int *psitionY) {
     int positionX = 0;
     int positionY = 0;
 
     for (int i = 0; motDeDyck1.mot[i] != '\0'; ++i) {
         if (motDeDyck1.mot[i] == motDeDyck1.charUn[0]) {
-            tab[positionX][positionY] = '/';
+            tab[positionY][positionX] = '/';
+            positionY++;
             positionX++;
-            positionY++;
         } else {
-            positionX--;
-            tab[positionX][positionY] = '\\';
-            positionY++;
+            positionY--;
+            tab[positionY][positionX] = '\\';
+            positionX++;
         }
-        if (*hauteurMax < positionX)
-            *hauteurMax = positionX;
-        validerEquilibreAxial(positionX);
-        *aire += positionX;
+        if (*hauteurMax < positionY)
+            *hauteurMax = positionY;
+        validerEquilibreAxial(positionY);
+        *aire += positionY;
     }
-    *psitionY = positionY;
+    *psitionY = positionX;
 }
 
+/*
+ * Valide la longueur du mot de Dyck. Affiche l'erreur si le mot est trop long.
+ *
+ * @param motDeDyck1 reference vers structure contenant la variable requise.
+ * return la valeur de verité correspondate.
+ * */
 bool validerLongueurMot(motDeDyck motDeDyck1) {
     bool validation = false;
     strlen(motDeDyck1.mot) <= 40 ? validation = true : printf("mot trop long\n");
     return validation;
 }
 
+/*
+ * Distribue les arguments ou entrées redirectionnées, vers leur variable correspondate, selon la forme des
+ * qu'ils sont soumis. Affiche le manuel si aucun argument/entrée sont soumis.
+ *
+ * @param motDeDyck1 reference vers structure contenant la variable requise.
+ *
+ *
+ * @param argc nb d'arguments.
+ * @param **argc pointeur vers pointeur du tableau contenant les arguments.
+ * */
 void distribuerEntrees_Args(char *motDeDyckUn, char *motDeDyckDeux, char *motDeDyckTrois, int argc, char **argv) {
     int pos;
     char arr[100];
@@ -170,6 +237,12 @@ void distribuerEntrees_Args(char *motDeDyckUn, char *motDeDyckDeux, char *motDeD
     }
 }
 
+/*
+ * Méthode main, lance tous les sous-methodes correspondate.
+ *
+ * @param argc nb d'arguments.
+ * @param *argc pointeur du tableau contenant les arguments.
+ * */
 int main(int argc, char *argv[]) {
     motDeDyck motDeDyck1 = {{0}, {0}, {0}, true};
 
@@ -178,19 +251,18 @@ int main(int argc, char *argv[]) {
     int aire = 0;
     char tab[40][40] = {0};
 
-    distribuerEntrees_Args((char *) &motDeDyck1.charUn, (char *) &motDeDyck1.charDeux, (char *) &motDeDyck1.mot, argc, argv);
+    distribuerEntrees_Args((char *) &motDeDyck1.charUn, (char *) &motDeDyck1.charDeux, (char *) &motDeDyck1.mot, argc,
+                           argv);
     validerDonnees(argc, motDeDyck1);
     if (validerLongueurMot(motDeDyck1)) {
-        if (validerLettre(motDeDyck1.mot, motDeDyck1.charUn, motDeDyck1.charDeux, motDeDyck1.valeur)) {
+        if (validerLettre(motDeDyck1)) {
             insererBarres(motDeDyck1, tab, &hauteurMax, &aire, &psitionY);
-            validerEquilibre(motDeDyck1.valeur, motDeDyck1.mot, motDeDyck1.charUn);
+            validerEquilibre(motDeDyck1);
             insererAsterikx(tab);
-            validerArgument(argc, argv, &hauteurMax, aire);
-            afficherAscii(argc, &hauteurMax, psitionY, tab);
+            validerArgument(argc, argv, hauteurMax, aire);
+            afficherAscii(hauteurMax, psitionY, tab);
         }
     }
     return 0;
 }
-
-
 
