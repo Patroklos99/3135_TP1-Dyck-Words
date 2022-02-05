@@ -26,7 +26,7 @@ typedef struct {
     char mot[TAILLE_MOT];   //Le mot saisi
     char charUn[TAILLE_CHAR];              //Caractere ascendant
     char charDeux[TAILLE_CHAR];               //Caractere descendant
-    bool valeur;
+    bool valeur;           //valeur de vérité du mot.
 
 } motDeDyck;
 
@@ -205,15 +205,15 @@ bool validerLongueurMot(motDeDyck motDeDyck1) {
 
 /*
  * Distribue les arguments ou entrées redirectionnées, vers leur variable correspondate, selon la forme des
- * qu'ils sont soumis. Affiche le manuel si aucun argument/entrée sont soumis.
+ * qu'ils sont soumis. Affiche le manuel si aucun argument/entrée sont soumis à l'exécution et arrête le programme.
  *
- * @param motDeDyck1 reference vers structure contenant la variable requise.
- *
- *
+ * @param *mddCharUn pointeur vers l'attribut charUn de la variable motDeDyck1
+ * @param *mddCharDeux pointeur vers l'attribut charDeux de la variable motDeDyck1
+ * @param *mddMot pointeur vers l'attribut mot de MotDeDyck1 de la variable motDeDyck1
  * @param argc nb d'arguments.
  * @param **argc pointeur vers pointeur du tableau contenant les arguments.
  * */
-void distribuerEntrees_Args(char *motDeDyckUn, char *motDeDyckDeux, char *motDeDyckTrois, int argc, char **argv) {
+void distribuerEntrees_Args(char *mddCharUn, char *mddCharDeux, char *mddMot, int argc, char **argv) {
     int pos;
     char arr[100];
 
@@ -222,15 +222,15 @@ void distribuerEntrees_Args(char *motDeDyckUn, char *motDeDyckDeux, char *motDeD
     if (pos - ftell(stdin)) {
         rewind(stdin);
         fgets(arr, 100, stdin);
-        sscanf(arr, "%s %s %s", motDeDyckUn, motDeDyckDeux, motDeDyckTrois);
+        sscanf(arr, "%s %s %s", mddCharUn, mddCharDeux, mddMot);
     } else if (argc == 4) {
-        strcpy((char *) motDeDyckUn, argv[1]);
-        strcpy((char *) motDeDyckDeux, argv[2]);
-        strcpy((char *) motDeDyckTrois, argv[3]);
+        strcpy((char *) mddCharUn, argv[1]);
+        strcpy((char *) mddCharDeux, argv[2]);
+        strcpy((char *) mddMot, argv[3]);
     } else if (argc == 5) {
-        strcpy((char *) motDeDyckUn, argv[2]);
-        strcpy((char *) motDeDyckDeux, argv[3]);
-        strcpy((char *) motDeDyckTrois, argv[4]);
+        strcpy((char *) mddCharUn, argv[2]);
+        strcpy((char *) mddCharDeux, argv[3]);
+        strcpy((char *) mddMot, argv[4]);
     } else if (argc == 1) {
         printf(USAGE, "./motdedyck");
         exit(0);
@@ -251,8 +251,8 @@ int main(int argc, char *argv[]) {
     int aire = 0;
     char tab[40][40] = {0};
 
-    distribuerEntrees_Args((char *) &motDeDyck1.charUn, (char *) &motDeDyck1.charDeux, (char *) &motDeDyck1.mot, argc,
-                           argv);
+    distribuerEntrees_Args((char *) &motDeDyck1.charUn, (char *) &motDeDyck1.charDeux,
+                           (char *) &motDeDyck1.mot, argc, argv);
     validerDonnees(argc, motDeDyck1);
     if (validerLongueurMot(motDeDyck1)) {
         if (validerLettre(motDeDyck1)) {
