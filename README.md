@@ -16,6 +16,7 @@ Il contient la construction de chaque commande make. C'est-à-dire leur cible et
 dépendences pour l'exécution correct.
 
 *Commandes make et leur rôle:*
+
 * `make:` Compile le fichier `motdedyck`.
 * `make test:` Execute les tests du fichier `check.bats` sur `motdedyck`. Ou Compile 
 `motdedyck.c` s'il ne l'est pas encore et execute les tests par la suite.
@@ -51,7 +52,8 @@ ou par rédirection en les plaçants dans un fichier `.txt`. Ecrivez `hauteur` o
 `./motdedyck` si vous voulez obtenir leurs valeurs respectives.
 
 Voici les regles à respecter pour vos entrées:
-* `Format:` ./motdedyck [HEIGHT,AREA] <LETTER 1> <LETTER 2> <\WORD>
+
+* `Format:` ./motdedyck [HEIGHT,AREA] <LETTER 1> <LETTER 2> <WORD>
 * Les des 2 caractères et le mot sont obligatoires.
 * Les deux caractères doivent être différents.
 * Le mot a une taille maximale de 40 caractères.
