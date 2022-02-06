@@ -6,7 +6,7 @@
  *
  *  Classe motdedyck.c
  *  Represente l'unique classe contenant le main et autres fonctions.
- *  Affiche l'image ASCII, l'hauteur, l'aire, le manuel ou un message d'erreur sur stdin, selon des entrées soumises.
+ *  Affiche l'image ASCII, l'hauteur, l'aire, le manuel ou un message d'erreur sur stdout, selon des entrées soumises.
  *
  */
 
