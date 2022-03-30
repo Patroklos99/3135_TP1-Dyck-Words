@@ -3,7 +3,7 @@ prog=motdedyck
 help_first_line="Usage: ./motdedyck [HEIGHT,AREA] <LETTER 1> <LETTER 2> <WORD>"
 
 # Normal usage
-
+#
 @test "test0 : Sans aucune entree, afficher aide" {
     #skip
     run ./$prog
