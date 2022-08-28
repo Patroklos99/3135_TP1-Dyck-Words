@@ -1,5 +1,6 @@
 # TP1: Chemins de Dyck
 
+<img src="https://user-images.githubusercontent.com/96098657/187054676-010fa9bd-e14a-4607-9a20-00a6d8e9ef8f.png" alt="drawing" width="340"/>
 
 ## Description
 
