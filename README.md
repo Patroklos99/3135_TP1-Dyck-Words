@@ -21,7 +21,6 @@ dépendences pour l'exécution correct.
 * `make:` Compile le fichier `motdedyck`.
 * `make test:` Execute les tests du fichier `check.bats` sur `motdedyck`. Ou Compile 
 `motdedyck.c` s'il ne l'est pas encore et execute les tests par la suite.
-* `make html:` Convertit `README.md` et `sujet.md` en fichiers html.
 * `make clean:` Efface les fichiers `\*.o` et/ou `\*.html` ainsi que tout autre type de fichier
 ce trouvant dans le fichier `gitignore`.
 
